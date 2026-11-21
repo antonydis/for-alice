@@ -124,3 +124,30 @@ button:disabled{cursor:default;opacity:.45}
   *,*::before,*::after{animation-duration:.001ms!important;transition-duration:.001ms!important;scroll-behavior:auto!important}
   .meet-capy--him{left:calc(50% - min(240px,42%) + 4px)}.meet-capy--her{right:calc(50% - min(240px,42%) + 4px)}
 }
+
+/* Illustrated postcard gallery: the original artwork is stored in /assets. */
+.painting-image{display:block;width:100%;height:100%;object-fit:cover;object-position:center;user-select:none}
+.meet-capy img{display:block;width:100%;height:auto;object-fit:contain;user-select:none}
+.meet-capy--her img{transform:scaleX(-1)}
+.museum-floor{height:145px}
+.walk-duo{width:164px;height:123px;bottom:9px}
+.walking-sprite{
+  width:100%;height:100%;background-image:url("./assets/walk-atlas.webp");
+  background-repeat:no-repeat;background-size:200% 200%;background-position:0% 0%;
+  animation:walk-poses .8s steps(1,end) infinite;animation-play-state:paused
+}
+.gallery.changing .walking-sprite{animation-play-state:running}
+@keyframes walk-poses{
+  0%,24.99%{background-position:0% 0%}
+  25%,49.99%{background-position:100% 0%}
+  50%,74.99%{background-position:0% 100%}
+  75%,100%{background-position:100% 100%}
+}
+@media(max-width:520px){
+  .museum-floor{height:122px}
+  .walk-duo{width:147px;height:110px;bottom:7px}
+}
+@media(max-height:670px){
+  .museum-floor{height:95px}
+  .walk-duo{width:120px;height:90px;bottom:4px}
+}

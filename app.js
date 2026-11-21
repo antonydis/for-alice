@@ -14,6 +14,9 @@ const nextButton = document.getElementById('next');
 const backButton = document.getElementById('back');
 const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 const memories = ['stadium','hike','cinema','ramen','birthday','dance'];
+const paintingSources = memories.map(scene => './assets/' + scene + '.webp');
+// The six watercolor postcards are real image assets, not placeholder SVGs.
+paintingSources.forEach(src => { const image = new Image(); image.src = src; });
 const descriptions = [
   'Two capybaras in the stands at a soccer match.',
   'Two capybaras together on an autumn hiking trail.',
@@ -252,7 +255,7 @@ function landscape() {
   );
 }
 function updateGallery(){
-  painting.innerHTML=illustrations[current]();
+  painting.innerHTML='<img class="painting-image" src="'+paintingSources[current]+'" alt="" loading="eager" decoding="async" draggable="false">';
   painting.setAttribute('aria-label',descriptions[current]);
   count.textContent=String(current+1).padStart(2,'0')+' / '+String(memories.length).padStart(2,'0');
   steps.innerHTML=memories.map((_,i)=>'<span class="step'+(i===current?' current':'')+'"></span>').join('');
@@ -285,9 +288,9 @@ async function begin(){
   updateGallery();
   busy=false;
 }
-document.getElementById('meeting-him').innerHTML=character(false);
-document.getElementById('meeting-her').innerHTML=character(true);
-document.getElementById('walk-duo').innerHTML=footDuo();
+document.getElementById('meeting-him').innerHTML='<img src="./assets/capy-antony.webp" alt="" draggable="false">';
+document.getElementById('meeting-her').innerHTML='<img src="./assets/capy-alice.webp" alt="" draggable="false">';
+document.getElementById('walk-duo').innerHTML='<div class="walking-sprite" aria-hidden="true"></div>';
 document.getElementById('ending-art').innerHTML=landscape();
 document.getElementById('begin').addEventListener('click',begin);
 nextButton.addEventListener('click',()=>turn(current+1));

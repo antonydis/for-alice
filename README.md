@@ -35,3 +35,7 @@ The website is public if Pages is enabled; do not add private photos or sensitiv
 The array \`memories\` in \`app.js\` controls scene order. Each art function (\`soccer\`, \`hike\`, \`cinema\`, \`ramen\`, \`birthday\`, \`dance\`) draws a painting. The final message is in \`index.html\`.
 
 Made with plain HTML, CSS, JavaScript and SVG. No build step required.
+
+## Updated illustrated gallery
+
+The six framed memories now use the original watercolor-style WebP postcards stored in `assets/`, not the earlier prototype SVG scenes. The two introductory capybaras are separate transparent illustrated assets, and the walking duo is a four-frame transparent sprite sheet. No labels or dedication captions appear on each framed memory.
