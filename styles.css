@@ -48,7 +48,7 @@ button:disabled{cursor:default;opacity:.45}
 .meet-capy svg{width:100%;display:block}
 .meet-capy--him{left:-35%;animation:meet-him 2.5s ease-in-out forwards}
 .meet-capy--her{right:-35%;animation:meet-her 2.5s ease-in-out forwards}
-.meeting-spark{position:absolute;left:50%;top:23%;font:42px "Patrick Hand",cursive;color:#ca819c;transform:translateX(-50%) scale(0);animation:tiny-heart .7s 1.85s both}
+.meeting-spark{position:absolute;left:50%;top:23%;font:22px "Patrick Hand",cursive;color:#ca819c;transform:translateX(-50%) scale(0);animation:tiny-heart .7s 1.85s both}
 .gallery{display:flex;flex-direction:column;justify-content:center;background:linear-gradient(#fff9f4,#f8eceb)}
 .gallery-wall{position:relative;display:flex;flex-direction:column;align-items:center;justify-content:space-between;min-height:min(660px,calc(100dvh - 120px));background:linear-gradient(95deg,#f6e7e2 0%,#fff7ed 25%,#fff8f0 75%,#f6e4e2 100%);overflow:hidden}
 .gallery-wall:before{content:"";position:absolute;inset:0;background-image:radial-gradient(#d3af9f1a 1px,transparent 1px);background-size:13px 13px;pointer-events:none}
@@ -87,8 +87,8 @@ button:disabled{cursor:default;opacity:.45}
 .ending-copy .chinese{font:clamp(20px,4.8vw,27px)/1.4 "DM Sans",sans-serif;color:#8b66a8;margin-top:17px}
 @keyframes flap{0%{transform:rotateX(0)}100%{transform:rotateX(170deg)}}
 @keyframes fade-away{to{opacity:0}}
-@keyframes meet-him{0%{left:-35%}55%{left:25%}73%{left:28%}85%{left:25%}100%{left:25%}}
-@keyframes meet-her{0%{right:-35%}55%{right:25%}73%{right:28%}85%{right:25%}100%{right:25%}}
+@keyframes meet-him{0%{left:-35%}55%{left:calc(50% - min(240px,42%) + 4px)}73%{left:calc(50% - min(240px,42%) + 15px)}85%,100%{left:calc(50% - min(240px,42%) + 4px)}}
+@keyframes meet-her{0%{right:-35%}55%{right:calc(50% - min(240px,42%) + 4px)}73%{right:calc(50% - min(240px,42%) + 15px)}85%,100%{right:calc(50% - min(240px,42%) + 4px)}}
 @keyframes tiny-heart{0%{transform:translateX(-50%) translateY(18px) scale(0);opacity:0}60%{transform:translateX(-50%) translateY(-8px) scale(1.1);opacity:1}100%{transform:translateX(-50%) translateY(-3px) scale(.8);opacity:.8}}
 @keyframes museum-stroll{0%{transform:translateX(0)}30%{transform:translateX(35px) translateY(-3px)}65%{transform:translateX(135px) translateY(0)}100%{transform:translateX(180px)}}
 @media(max-width:520px){
@@ -122,5 +122,5 @@ button:disabled{cursor:default;opacity:.45}
 }
 @media(prefers-reduced-motion:reduce){
   *,*::before,*::after{animation-duration:.001ms!important;transition-duration:.001ms!important;scroll-behavior:auto!important}
-  .meet-capy--him{left:25%}.meet-capy--her{right:25%}
+  .meet-capy--him{left:calc(50% - min(240px,42%) + 4px)}.meet-capy--her{right:calc(50% - min(240px,42%) + 4px)}
 }
