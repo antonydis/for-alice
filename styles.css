@@ -1,0 +1,126 @@
+:root{
+  --paper:#fff9f4;--blush:#faeef0;--pink:#f4d9dc;
+  --ink:#624b49;--muted:#967c7c;--blue:#4d76b4;--violet:#9c70b5;
+  --wood:#dfc9bd;--line:#e4c8c6;--rose:#bf8396;
+}
+*{box-sizing:border-box}
+html,body{margin:0;min-height:100%;-webkit-tap-highlight-color:transparent}
+body{
+  min-height:100dvh;color:var(--ink);font-family:"DM Sans",system-ui,sans-serif;
+  background:radial-gradient(ellipse at 13% -15%,#fffaf6 0%,transparent 48%),radial-gradient(ellipse at 105% 110%,#e9e7f8 0%,transparent 42%),var(--blush);
+}
+button{font:inherit;cursor:pointer}
+button:focus-visible{outline:3px solid var(--blue);outline-offset:4px}
+button:disabled{cursor:default;opacity:.45}
+.hidden{display:none!important}
+.site{width:100%;min-height:100dvh;display:grid;place-items:center;padding:clamp(10px,2vw,26px);overflow:hidden}
+.view{position:relative;width:min(700px,100%);min-height:min(850px,calc(100dvh - 24px));border-radius:28px;border:1px solid #fff9;overflow:hidden;box-shadow:0 14px 50px #b97d8921}
+.intro{background:radial-gradient(circle at 50% 50%,#fff9f5 0%,#fff7f4 49%,#f9e1e6 100%);display:flex;align-items:center;justify-content:center}
+.intro:before,.intro:after{position:absolute;content:"";width:240px;height:150px;border-radius:50%;background:#f6d9de80}
+.intro:before{left:-125px;bottom:-65px;transform:rotate(22deg)}
+.intro:after{right:-125px;top:-65px;transform:rotate(-22deg)}
+.intro-glow{position:absolute;width:540px;height:540px;background:radial-gradient(circle,#f8e6e77a,transparent 73%);left:50%;top:50%;transform:translate(-50%,-50%)}
+.letter-shell{width:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:30px;position:relative;padding:28px}
+.envelope{position:relative;width:min(450px,100%);aspect-ratio:1.35;filter:drop-shadow(0 21px 17px #ad727b30);perspective:1000px;transform:rotate(-2deg);transition:transform .45s ease}
+.envelope-back,.envelope-front,.envelope-flap,.envelope-paper{position:absolute;inset:0;border-radius:13px}
+.envelope-back{background:#fbefdd;border:2px solid #cda2a0}
+.envelope-paper{left:11%;right:11%;top:8%;bottom:14%;background:linear-gradient(145deg,#fff9ee,#fff3ea);border:1px solid #e6c8c0;transition:transform .7s ease .2s}
+.envelope-flap{background:#f9ece7;clip-path:polygon(0 0,100% 0,50% 65%);z-index:3;filter:drop-shadow(0 3px 1px #d5aaa3)}
+.envelope-front{background:linear-gradient(146deg,transparent 49.6%,#d5a7aa 50%,transparent 50.4%),linear-gradient(214deg,transparent 49.6%,#d5a7aa 50%,transparent 50.4%),linear-gradient(transparent 0%,#f9e4e3 100%);clip-path:polygon(0 23%,50% 72%,100% 23%,100% 100%,0 100%);border:2px solid #d3aaa8;z-index:4}
+.envelope-address{position:absolute;left:0;right:0;top:32%;z-index:5;display:flex;flex-direction:column;align-items:center;transform:rotate(2deg);color:#765056;line-height:1.08;text-shadow:0 2px #fff9}
+.to{font:clamp(42px,8.8vw,67px)/1.04 "Patrick Hand",cursive}
+.from{font:clamp(24px,5vw,34px)/1.15 "Patrick Hand",cursive}
+.envelope-seal{position:absolute;left:50%;bottom:7%;z-index:6;transform:translateX(-50%);width:65px;height:65px;display:grid;place-items:center;border-radius:50%;font:48px/1 "Patrick Hand",cursive;color:#fff;background:linear-gradient(145deg,#da94a7,#be728d);border:4px solid #bb758b;box-shadow:inset 0 2px #ffe3e4a8,0 5px 8px #9a67745e}
+.envelope.opening .envelope-flap{transform-origin:top;animation:flap 1s ease forwards}
+.envelope.opening .envelope-paper{transform:translateY(-30%)}
+.envelope.opening .envelope-address,.envelope.opening .envelope-seal{animation:fade-away .4s forwards}
+.primary{border:0;border-radius:999px;background:var(--violet);color:white;box-shadow:0 7px 0 #81618e26;padding:13px 34px;min-height:54px;font-weight:700;font-size:15px;transition:transform .2s,background .2s}
+.primary:hover{background:#8e65a8;transform:translateY(-2px)}
+.primary:active{transform:translateY(1px)}
+.primary span{font-size:20px;margin-left:5px}
+.intro-date{font:24px/1 "Patrick Hand",cursive;color:#967d7d;margin-top:-10px}
+.meeting{background:linear-gradient(170deg,#fef8f1,#f5e8e7 70%,#f7e3e8);display:grid;place-items:center}
+.gallery-arch{position:absolute;inset:9% 10% 0;border-radius:320px 320px 0 0;border:12px solid #f0d4cf;box-shadow:inset 0 0 0 6px #fef8ee}
+.meeting-illustration{position:relative;width:100%;height:min(510px,65dvh);align-self:center;overflow:hidden}
+.meeting-floor{position:absolute;bottom:23%;left:0;right:0;height:3px;background:#d9bdb5}
+.meeting-floor:before{content:"";position:absolute;left:8%;right:8%;bottom:-17px;height:17px;border-radius:50%;background:#cda8a453;filter:blur(12px)}
+.meet-capy{position:absolute;bottom:23%;width:42%;max-width:240px;z-index:2;filter:drop-shadow(0 9px 4px #a4847d2e)}
+.meet-capy svg{width:100%;display:block}
+.meet-capy--him{left:-35%;animation:meet-him 2.5s ease-in-out forwards}
+.meet-capy--her{right:-35%;animation:meet-her 2.5s ease-in-out forwards}
+.meeting-spark{position:absolute;left:50%;top:23%;font:42px "Patrick Hand",cursive;color:#ca819c;transform:translateX(-50%) scale(0);animation:tiny-heart .7s 1.85s both}
+.gallery{display:flex;flex-direction:column;justify-content:center;background:linear-gradient(#fff9f4,#f8eceb)}
+.gallery-wall{position:relative;display:flex;flex-direction:column;align-items:center;justify-content:space-between;min-height:min(660px,calc(100dvh - 120px));background:linear-gradient(95deg,#f6e7e2 0%,#fff7ed 25%,#fff8f0 75%,#f6e4e2 100%);overflow:hidden}
+.gallery-wall:before{content:"";position:absolute;inset:0;background-image:radial-gradient(#d3af9f1a 1px,transparent 1px);background-size:13px 13px;pointer-events:none}
+.spotlight{position:absolute;top:16px;width:25%;height:72%;opacity:.37;pointer-events:none;background:linear-gradient(#fff5d8ab,transparent);clip-path:polygon(45% 0,55% 0,100% 100%,0 100%)}
+.spotlight--left{left:13%}
+.spotlight--right{right:13%}
+.gallery-header{position:relative;z-index:2;display:flex;align-items:center;justify-content:center;gap:26px;padding:22px 0 14px;letter-spacing:.22em;color:#9b8080}
+.gallery-mark{color:#c89fa8;font-size:16px}
+.gallery-count{font-size:12px;font-weight:600}
+.picture-area{position:relative;z-index:2;width:min(580px,89%);margin:auto 0;display:flex;flex-direction:column;align-items:center;padding:6px 0 28px}
+.painting-frame{position:relative;width:100%;aspect-ratio:1.38;padding:10px;border:7px solid #b9916d;background:linear-gradient(125deg,#f2d8ae 0%,#a87853 20%,#d7b188 36%,#f4dfb5 51%,#a57b58 69%,#eacb9e 90%);box-shadow:0 6px 0 #866149,0 14px 29px #8864584d,inset 0 0 2px 2px #fff3d9;border-radius:5px;overflow:hidden}
+.painting-frame:after{content:"";position:absolute;inset:2px;pointer-events:none;border:1px solid #fbe6c4b8;box-shadow:inset 0 0 0 1px #7e553d54}
+.painting-mat{width:100%;height:100%;background:#fff6ea;padding:7px;box-shadow:inset 0 0 0 1px #d5b9a3}
+.painting{width:100%;height:100%;overflow:hidden;box-shadow:inset 0 0 12px #6348442b;background:#e8d6d1;opacity:1;transition:opacity .24s ease,transform .35s ease}
+.painting svg{display:block;width:100%;height:100%;object-fit:cover}
+.gallery.changing .painting{opacity:0;transform:scale(.98)}
+.tiny-plaque{position:absolute;bottom:-1px;left:50%;transform:translateX(-50%);width:65px;height:15px;border-radius:3px;background:linear-gradient(#c5a179,#e7d6ae,#b99260);box-shadow:0 2px 4px #8e6e5a2d;text-align:center;font:13px/14px "Patrick Hand";color:#92657a}
+.museum-baseboard{width:100%;height:17px;border-top:3px solid #dfbbb1;border-bottom:3px solid #e9cec7;background:#f7e4dd}
+.museum-floor{position:relative;width:100%;height:110px;background:repeating-linear-gradient(95deg,#e4d0c3 0 28px,#d7bcae 29px 31px,#ecd9cf 32px 67px);border-top:5px solid #ebd1c7;overflow:hidden;box-shadow:inset 0 15px 18px #aa85772b}
+.floor-path{position:absolute;inset:15px 0 0;width:100%;height:80px}
+.walk-duo{position:absolute;bottom:28px;left:8%;width:156px;height:91px;z-index:3;filter:drop-shadow(0 7px 3px #987e783b)}
+.walk-duo svg{width:100%;height:100%;display:block}
+.gallery.changing .walk-duo{animation:museum-stroll .9s ease-in-out}
+.gallery-controls{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:18px clamp(18px,5vw,40px) 20px;min-height:90px;background:#fff8f4}
+.back{width:54px;height:52px;border:1px solid #e2cbc6;background:#fff8f0;border-radius:999px;color:#886975;font-size:24px}
+.steps{display:flex;gap:5px;align-items:center;flex:1;justify-content:center}
+.step{width:7px;height:7px;background:#ddc3c9;border-radius:99px;transition:background .2s,width .2s}
+.step.current{width:21px;background:#9b79b4}
+.primary--next{font-size:14px;padding:12px 20px;white-space:nowrap;min-height:50px}
+.ending{background:#fff8f4;display:flex;justify-content:center;align-items:center;padding:clamp(18px,4vw,36px)}
+.ending-card{width:100%;display:flex;flex-direction:column;gap:24px;align-items:center}
+.ending-art{width:min(580px,100%);aspect-ratio:1.55;overflow:hidden;border-radius:15px;border:8px solid #fff4e7;box-shadow:0 12px 34px #ab8d8b31}
+.ending-art svg{display:block;width:100%;height:100%}
+.ending-copy{text-align:center;max-width:530px;padding:0 6px}
+.ending-copy p{font:clamp(25px,5.4vw,36px)/1.16 "Patrick Hand",cursive;margin:0 0 12px;color:#78545a}
+.ending-copy .chinese{font:clamp(20px,4.8vw,27px)/1.4 "DM Sans",sans-serif;color:#8b66a8;margin-top:17px}
+@keyframes flap{0%{transform:rotateX(0)}100%{transform:rotateX(170deg)}}
+@keyframes fade-away{to{opacity:0}}
+@keyframes meet-him{0%{left:-35%}55%{left:25%}73%{left:28%}85%{left:25%}100%{left:25%}}
+@keyframes meet-her{0%{right:-35%}55%{right:25%}73%{right:28%}85%{right:25%}100%{right:25%}}
+@keyframes tiny-heart{0%{transform:translateX(-50%) translateY(18px) scale(0);opacity:0}60%{transform:translateX(-50%) translateY(-8px) scale(1.1);opacity:1}100%{transform:translateX(-50%) translateY(-3px) scale(.8);opacity:.8}}
+@keyframes museum-stroll{0%{transform:translateX(0)}30%{transform:translateX(35px) translateY(-3px)}65%{transform:translateX(135px) translateY(0)}100%{transform:translateX(180px)}}
+@media(max-width:520px){
+  .view{min-height:calc(100dvh - 20px);border-radius:25px}
+  .envelope{width:92%}
+  .letter-shell{gap:26px}
+  .gallery-wall{min-height:calc(100dvh - 116px)}
+  .gallery-header{padding-top:17px;padding-bottom:11px}
+  .picture-area{width:88%;padding-bottom:22px}
+  .painting-frame{border-width:5px;padding:7px}
+  .painting-mat{padding:4px}
+  .museum-floor{height:98px}
+  .walk-duo{width:130px;height:74px;bottom:22px}
+  .gallery-controls{padding:13px 12px 16px;gap:8px;min-height:82px}
+  .back{width:49px;min-width:49px;height:49px}
+  .primary--next{padding:12px 15px;font-size:13px}
+  .steps{gap:4px}
+  .step{width:6px;height:6px}
+  .step.current{width:16px}
+}
+@media(max-height:670px){
+  .gallery-wall{min-height:calc(100dvh - 108px)}
+  .museum-floor{height:75px}
+  .walk-duo{bottom:16px;width:120px;height:66px}
+  .picture-area{width:min(490px,80%);padding-bottom:12px}
+  .gallery-header{padding:10px 0}
+  .gallery-controls{padding:9px 13px;min-height:70px}
+  .ending-art{width:min(360px,100%)}
+  .ending-card{gap:10px}
+  .ending-copy p{margin-bottom:6px}
+}
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.001ms!important;transition-duration:.001ms!important;scroll-behavior:auto!important}
+  .meet-capy--him{left:25%}.meet-capy--her{right:25%}
+}
