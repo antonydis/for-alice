@@ -233,9 +233,9 @@ function dance(){
 const illustrations = [soccer,hike,cinema,ramen,birthday,dance];
 
 function footDuo() {
-  return '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 460 200" aria-hidden="true">'+
-    '<g transform="translate(0 17) scale(.75)">'+capyFigure(false)+'</g>'+
-    '<g transform="translate(196 18) scale(.75)">'+capyFigure(true)+'</g></svg>';
+  // Walking through the museum, they are seen from behind looking at each painting.
+  return '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 460 200" aria-hidden="true">' +
+    rearCapy(10,18,.75,false) + rearCapy(203,18,.75,true) + '</svg>';
 }
 function landscape() {
   return makeSvg(
