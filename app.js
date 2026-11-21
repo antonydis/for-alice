@@ -121,7 +121,7 @@ const gradients = '<defs>' +
   '<linearGradient id="wood" x2="0" y2="1"><stop stop-color="#e6ba98"/><stop offset="1" stop-color="#c99175"/></linearGradient>' +
   '</defs>';
 function makeSvg(inner,label) {
-  return '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 540" role="img" aria-label="'+label.replace(/"/g,'&quot;')+'">' + gradients + inner + '</svg>';
+  return '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 540" preserveAspectRatio="xMidYMid slice" role="img" aria-label="'+label.replace(/"/g,'&quot;')+'">' + gradients + inner + '</svg>';
 }
 function soccer(){
   let crowd='';
