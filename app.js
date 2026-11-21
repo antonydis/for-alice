@@ -281,7 +281,7 @@ async function begin(){
   busy=true;
   document.getElementById('begin').disabled=true;
   document.getElementById('envelope').classList.add('opening');
-  if(!reduced)await pause(840);
+  if(!reduced)await pause(950);
   show('meeting');
   if(!reduced)await pause(2600);
   show('gallery');
