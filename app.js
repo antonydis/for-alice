@@ -25,7 +25,7 @@ const descriptions = [
   'Two capybaras celebrating a birthday with arepas and empanadas.',
   'Two capybaras dancing together in a studio.'
 ];
-let current = 0;
+let current = -1;
 let busy = false;
 let sequence = 0;
 const pause = ms => new Promise(resolve => setTimeout(resolve, ms));
@@ -254,27 +254,50 @@ function landscape() {
     'The two capybaras together, looking at the sunset over the mountains.'
   );
 }
+function diaryIntroCard() {
+  return '<div class="gallery-note"><div class="gallery-note-card">' +
+    '<div class="gallery-note-kicker">Our little gallery</div>' +
+    '<p class="gallery-note-text">Here is our little diary of moments together.</p>' +
+    '<span class="gallery-note-heart" aria-hidden="true">♡</span>' +
+    '</div></div>';
+}
 function updateGallery(){
-  painting.innerHTML='<img class="painting-image" src="'+paintingSources[current]+'" alt="" loading="eager" decoding="async" draggable="false">';
-  painting.setAttribute('aria-label',descriptions[current]);
-  count.textContent=String(current+1).padStart(2,'0')+' / '+String(memories.length).padStart(2,'0');
-  steps.innerHTML=memories.map((_,i)=>'<span class="step'+(i===current?' current':'')+'"></span>').join('');
-  backButton.disabled=current===0;
-  nextButton.innerHTML=current===memories.length-1?'One more thing <span aria-hidden="true">→</span>':'Keep walking <span aria-hidden="true">→</span>';
+  if(current === -1){
+    painting.innerHTML=diaryIntroCard();
+    painting.setAttribute('aria-label','Here is our little diary of moments together.');
+    count.textContent='♡';
+    steps.innerHTML=memories.map(()=>'<span class="step"></span>').join('');
+    backButton.disabled=true;
+    nextButton.innerHTML='Start our diary <span aria-hidden="true">→</span>';
+  } else {
+    painting.innerHTML='<img class="painting-image" src="'+paintingSources[current]+'" alt="" loading="eager" decoding="async" draggable="false">';
+    painting.setAttribute('aria-label',descriptions[current]);
+    count.textContent=String(current+1).padStart(2,'0')+' / '+String(memories.length).padStart(2,'0');
+    steps.innerHTML=memories.map((_,i)=>'<span class="step'+(i===current?' current':'')+'"></span>').join('');
+    backButton.disabled=current===0;
+    nextButton.innerHTML=current===memories.length-1
+      ? 'One more thing <span aria-hidden="true">→</span>'
+      : 'Keep walking <span aria-hidden="true">→</span>';
+  }
+  nextButton.disabled=false;
 }
 async function turn(nextIndex){
-  if(busy||nextIndex<0||nextIndex>memories.length)return;
-  if(nextIndex===memories.length){show('ending');return;}
-  if(nextIndex===current)return;
+  if(busy || nextIndex < -1 || nextIndex > memories.length || nextIndex === current)return;
+  if(nextIndex === memories.length){show('ending');return;}
   busy=true;
   nextButton.disabled=true;
   backButton.disabled=true;
-  if(!reduced){gallery.classList.add('changing');await pause(500);}
-  current=nextIndex;
-  updateGallery();
-  if(!reduced)await pause(280);
-  gallery.classList.remove('changing');
-  busy=false;
+  try{
+    if(!reduced){gallery.classList.add('changing');await pause(500);}
+    current=nextIndex;
+    updateGallery();
+    if(!reduced)await pause(280);
+  } finally {
+    gallery.classList.remove('changing');
+    busy=false;
+    nextButton.disabled=false;
+    backButton.disabled=current<=0;
+  }
 }
 async function begin(){
   if(busy)return;
@@ -284,6 +307,7 @@ async function begin(){
   if(!reduced)await pause(950);
   show('meeting');
   if(!reduced)await pause(2600);
+  current=-1;
   show('gallery');
   updateGallery();
   busy=false;
