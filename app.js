@@ -315,7 +315,14 @@ async function begin(){
 document.getElementById('meeting-him').innerHTML='<img src="./assets/capy-antony.webp" alt="" draggable="false">';
 document.getElementById('meeting-her').innerHTML='<img src="./assets/capy-alice.webp" alt="" draggable="false">';
 document.getElementById('walk-duo').innerHTML='<div class="walking-sprite" aria-hidden="true"></div>';
-document.getElementById('ending-art').innerHTML=landscape();
+// Show the approved watercolor artwork; retain the original SVG only if the asset is not present.
+const endingContainer = document.getElementById('ending-art');
+const endingImage = new Image();
+endingImage.className = 'ending-selected-art';
+endingImage.alt = 'Two capybaras cuddling on a mountain at sunset, with a plane towards Brazil on the horizon.';
+endingImage.onload = () => { endingContainer.replaceChildren(endingImage); };
+endingImage.onerror = () => { endingContainer.innerHTML = landscape(); };
+endingImage.src = './assets/ending-option-2.webp';
 document.getElementById('begin').addEventListener('click',begin);
 nextButton.addEventListener('click',()=>turn(current+1));
 backButton.addEventListener('click',()=>turn(current-1));
