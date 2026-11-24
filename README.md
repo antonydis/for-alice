@@ -7,7 +7,7 @@ An interactive, mobile-first letter for Alice, made by Antony to celebrate a mon
 1. A centered envelope: **To Alice · from Antony**. Nothing moves until **Begin** is tapped.
 2. Two illustrated capybaras (his blue scarf, her violet bow) approach, bump noses and share a tiny kiss.
 3. A miniature art museum: tap **Keep walking →** to watch the capybaras walk together to the next framed memory.
-4. Six paintings, without labels or generic captions: soccer, hike, cinema, Chinese food and ramen, birthday with arepas and empanadas, and dancing.
+4. Seven paintings, without labels or generic captions: soccer, hike, cinema, Chinese food and ramen, birthday with arepas and empanadas, dancing, and the Coaticook lookout.
 5. A sunset with a short personal message in Spanish and Chinese.
 
 The art gallery deliberately uses custom inline SVG illustrations, so every frame has a built-in scene and no image links can break. The story has no music, tracking, accounts or backend.
@@ -28,7 +28,7 @@ The website is public if Pages is enabled; do not add private photos or sensitiv
 
 - \`index.html\` — four screens: envelope, meeting, gallery and ending
 - \`styles.css\` — responsive styles and animations
-- \`app.js\` — capybara drawings, six SVG scenes, navigation, animation timing
+- \`app.js\` — capybara drawings, seven watercolor scenes, navigation, animation timing
 
 ## Edit the story
 

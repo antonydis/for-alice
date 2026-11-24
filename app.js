@@ -13,9 +13,9 @@ const steps = document.getElementById('steps');
 const nextButton = document.getElementById('next');
 const backButton = document.getElementById('back');
 const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-const memories = ['stadium','hike','cinema','ramen','birthday','dance'];
+const memories = ['stadium','hike','cinema','ramen','birthday','dance','coaticook'];
 const paintingSources = memories.map(scene => './assets/' + scene + '.webp');
-// The six watercolor postcards are real image assets, not placeholder SVGs.
+// The seven watercolor postcards are real image assets, not placeholder SVGs.
 paintingSources.forEach(src => { const image = new Image(); image.src = src; });
 const descriptions = [
   'Two capybaras in the stands at a soccer match.',
@@ -23,7 +23,8 @@ const descriptions = [
   'Two capybaras watching a film in a little cinema.',
   'Two capybaras enjoying ramen and Chinese pastries.',
   'Two capybaras celebrating a birthday with arepas and empanadas.',
-  'Two capybaras dancing together in a studio.'
+  'Two capybaras dancing together in a studio.',
+  'Antony in a blue sweater embraces Alice in pink at the top of the Coaticook lookout above the gorge.'
 ];
 let current = -1;
 let busy = false;
